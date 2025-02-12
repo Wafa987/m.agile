@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 public class PageAcceuilFenetre extends JFrame {
     private JLabel imageLabel;  // Label pour afficher l'image
     private ImageIcon originalImageIcon;  // Image d'origine à afficher
+    private JLabel welcomeLabel; // Label pour le message de bienvenue
 
     /**
      * Constructeur pour initialiser la fenêtre d'accueil.
@@ -51,8 +52,7 @@ public class PageAcceuilFenetre extends JFrame {
         navBar.add(rightPanel, BorderLayout.EAST);
 
         // Chargement de l'image
-        originalImageIcon = new ImageIcon("../voyage.jpg");
-       
+        originalImageIcon = new ImageIcon("resources/voyage.jpg");
 
         // Vérifie si l'image existe
         if (originalImageIcon.getIconWidth() == -1) {
@@ -63,9 +63,16 @@ public class PageAcceuilFenetre extends JFrame {
             updateImageSize();  // Met à jour la taille de l'image selon la taille de la fenêtre
         }
 
+        // Crée un label avec un message de bienvenue
+        welcomeLabel = new JLabel("Bienvenue dans la page d'accueil de notre agence de voyage !", SwingConstants.CENTER);
+        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        welcomeLabel.setForeground(new Color(0, 102, 204)); // Bleu pour une meilleure visibilité
+
         // Ajout des composants au panel principal
         mainPanel.add(navBar, BorderLayout.NORTH);
+        mainPanel.add(welcomeLabel, BorderLayout.CENTER);
         mainPanel.add(imageLabel, BorderLayout.CENTER);
+   
 
         // Ajout du panel principal à la fenêtre
         setContentPane(mainPanel);
